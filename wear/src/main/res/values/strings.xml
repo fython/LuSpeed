@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">测撸速</string>
+    <string name="first_title">按下按钮开始计时</string>
+
+	<string name="title_luing">剩下 %1$s 秒. 你已经撸了 %2$s 下.</string>
+
+	<string name="game_over">你在 %1$d 秒内已经撸了 %2$d 下。 你的撸速是 %3$s 次\/秒。 →_→</string>
+
+</resources>

@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault" >
         <activity
-            android:name="moe.feng.luspeed.MainActivity"
+            android:name="moe.feng.luspeed.EntryActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+	    <activity
+		    android:name="moe.feng.luspeed.MainActivity"
+		    android:label="@string/app_name" >
+		    <intent-filter>
+			    <action android:name="android.intent.action.MAIN" />
+		    </intent-filter>
+	    </activity>
+
+	    <activity
+		    android:name="moe.feng.luspeed.WizardActivity"
+		    android:label="@string/app_name" >
+		    <intent-filter>
+			    <action android:name="android.intent.action.MAIN" />
+		    </intent-filter>
+	    </activity>
     </application>
 
 </manifest>

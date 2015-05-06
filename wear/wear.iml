@@ -85,8 +85,9 @@
     <orderEntry type="library" exported="" name="wearable-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-7.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-22.0.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-22.1.0" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-22.1.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v13-22.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-wearable-7.0.0" level="project" />
   </component>
 </module>

@@ -12,9 +12,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.util.Timer;
-import java.util.TimerTask;
 
+import moe.feng.luspeed.model.Game;
 import moe.feng.luspeed.support.ShakeDetector;
 
 public class MainActivity extends Activity implements WatchViewStub.OnLayoutInflatedListener {
@@ -25,14 +24,11 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 	private ShakeDetector mShakeDetector;
 
 	private boolean isStart = false;
+	private Game mGame;
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 	private static final int MSG_UPDATE_TEXT = 1000;
 	private static final String VALUE_TEXT = "text";
-	private static final int ROUND_TIME_SEC = 30, INTERVAL_SECOND = 1000;
-
-	private int remainSecond = 0, lastCount = 0;
-	private Timer mTimer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +45,7 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 			@Override
 			public void onShake(int shakeTimes) {
 				if (isStart) {
+					mGame.setCount(shakeTimes);
 					updateData();
 				}
 			}
@@ -68,7 +65,6 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 					startGame();
 				} else {
 					endGame();
-					remainSecond = 0;
 				}
 			}
 		});
@@ -90,29 +86,45 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 	private void startGame() {
 		Log.i(TAG, "startGame");
 		mShakeDetector.clearTimer();
-		isStart = true;
-		remainSecond = ROUND_TIME_SEC;
-		mTimer = new Timer();
-		mTimer.schedule(mTask, INTERVAL_SECOND, INTERVAL_SECOND);
+
+		mGame = new Game(new Game.GameEventListener() {
+
+			@Override
+			public void onTimeChanged(int remainSecond) {
+				updateData();
+			}
+
+			@Override
+			public void onStart() {
+				isStart = true;
+			}
+
+			@Override
+			public void onStop() {
+				isStart = false;
+			}
+
+		});
+		mGame.start();
 	}
 
 	private void endGame() {
 		Log.i(TAG, "endGame");
-		isStart = false;
-		mTimer.cancel();
-		lastCount = mShakeDetector.getSensorChangeCount();
-		mShakeDetector.clearTimer();
+		mGame.stop();
 
-		double speed = lastCount / (ROUND_TIME_SEC - remainSecond);
+		int playedLength = mGame.getGameTime() - mGame.getRemainSecond();
+		double speed = mGame.getCount() / playedLength;
 
 		String str = String.format(
 				getString(R.string.game_over),
-				(ROUND_TIME_SEC - remainSecond),
-				lastCount,
-				new DecimalFormat("#.00").format(speed)
+				mGame.getGameTime() - mGame.getRemainSecond(),
+				mGame.getCount(),
+				new DecimalFormat("#.##").format(speed)
 		);
 		Log.i(TAG, str);
 		updateText(str);
+
+		mShakeDetector.clearTimer();
 	}
 
 	private void updateText(String text) {
@@ -125,10 +137,9 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 	}
 
 	private void updateData() {
-		int times = mShakeDetector.getSensorChangeCount();
 		String str = String.format(getString(R.string.title_luing),
-				remainSecond,
-				times
+				mGame.getRemainSecond(),
+				mGame.getCount()
 		);
 		Log.i(TAG, str);
 		updateText(str);
@@ -148,23 +159,6 @@ public class MainActivity extends Activity implements WatchViewStub.OnLayoutInfl
 						mTextView.setVisibility(mTextView.GONE);
 					}
 					break;
-			}
-		}
-
-	};
-
-	private TimerTask mTask = new TimerTask() {
-
-		@Override
-		public void run() {
-			if (isStart) {
-				if (remainSecond == 0) {
-					endGame();
-					return;
-				}
-				Log.i(TAG, "Timer: remains " + remainSecond);
-				remainSecond--;
-				updateData();
 			}
 		}
 

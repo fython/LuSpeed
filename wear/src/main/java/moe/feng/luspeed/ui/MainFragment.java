@@ -60,7 +60,9 @@ public class MainFragment extends Fragment implements WatchViewStub.OnLayoutInfl
 				if (!isStart) {
 					startGame();
 				} else {
-					endGame();
+					if (mGame != null) {
+						endGame();
+					}
 				}
 			}
 		});
@@ -68,6 +70,7 @@ public class MainFragment extends Fragment implements WatchViewStub.OnLayoutInfl
 
 	@Override
 	public void onAttach(Activity activity) {
+		super.onAttach(activity);
 		mShakeDetector = ShakeDetector.getInstance(activity.getApplicationContext());
 		mShakeDetector.mShakeThreshold = 3500;
 		mShakeDetector.addOnShakeListener(new ShakeDetector.OnShakeListener() {
@@ -87,7 +90,9 @@ public class MainFragment extends Fragment implements WatchViewStub.OnLayoutInfl
 		if (mShakeDetector != null) {
 			mShakeDetector.stop();
 		}
-		endGame();
+		if (mGame != null) {
+			endGame();
+		}
 		super.onStop();
 	}
 
@@ -120,6 +125,7 @@ public class MainFragment extends Fragment implements WatchViewStub.OnLayoutInfl
 			@Override
 			public void onStop() {
 				isStart = false;
+				endGame();
 			}
 
 		});
@@ -131,13 +137,12 @@ public class MainFragment extends Fragment implements WatchViewStub.OnLayoutInfl
 		mGame.stop();
 
 		int playedLength = mGame.getGameTime() - mGame.getRemainSecond();
-		double speed = mGame.getCount() / playedLength;
 
 		String str = String.format(
 				getString(R.string.game_over),
-				mGame.getGameTime() - mGame.getRemainSecond(),
+				playedLength,
 				mGame.getCount(),
-				new DecimalFormat("#.##").format(speed)
+				String.format("%.3f", mGame.getCount() / (float) playedLength)
 		);
 		Log.i(TAG, str);
 		updateText(str);

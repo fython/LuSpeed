@@ -24,12 +24,14 @@ ADDED from AndroidManifest.xml:7:2
 application
 ADDED from AndroidManifest.xml:9:5
 MERGED from com.google.android.support:wearable:1.1.0:10:5
-MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.1.0:22:5
 MERGED from com.android.support:recyclerview-v7:21.0.0:17:5
-MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.1.0:22:5
 MERGED from com.google.android.gms:play-services-wearable:7.0.0:19:5
 MERGED from com.google.android.gms:play-services-base:7.0.0:20:5
-MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.1.0:22:5
+MERGED from com.android.support:support-v13:22.1.0:22:5
+MERGED from com.android.support:support-v4:22.1.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:12:9
 	android:allowBackup
@@ -38,7 +40,7 @@ MERGED from com.android.support:support-v4:22.0.0:22:5
 		ADDED from AndroidManifest.xml:11:9
 	android:theme
 		ADDED from AndroidManifest.xml:13:9
-activity#moe.feng.luspeed.MainActivity
+activity#moe.feng.luspeed.EntryActivity
 ADDED from AndroidManifest.xml:14:9
 	android:label
 		ADDED from AndroidManifest.xml:16:13
@@ -54,15 +56,31 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:20:17
 	android:name
 		ADDED from AndroidManifest.xml:20:27
+activity#moe.feng.luspeed.MainActivity
+ADDED from AndroidManifest.xml:24:6
+	android:label
+		ADDED from AndroidManifest.xml:26:7
+	android:name
+		ADDED from AndroidManifest.xml:25:7
+intent-filter#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:27:7
+activity#moe.feng.luspeed.WizardActivity
+ADDED from AndroidManifest.xml:32:6
+	android:label
+		ADDED from AndroidManifest.xml:34:7
+	android:name
+		ADDED from AndroidManifest.xml:33:7
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.google.android.support:wearable:1.1.0:6:5
-MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.1.0:20:5
 MERGED from com.android.support:recyclerview-v7:21.0.0:15:5
-MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.1.0:20:5
 MERGED from com.google.android.gms:play-services-wearable:7.0.0:18:5
 MERGED from com.google.android.gms:play-services-base:7.0.0:18:5
-MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.1.0:20:5
+MERGED from com.android.support:support-v13:22.1.0:20:5
+MERGED from com.android.support:support-v4:22.1.0:20:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

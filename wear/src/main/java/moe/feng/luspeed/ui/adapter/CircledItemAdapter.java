@@ -1,5 +1,6 @@
 package moe.feng.luspeed.ui.adapter;
 
+import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.wearable.view.CircledImageView;
 import android.support.wearable.view.WearableListView;
@@ -15,6 +16,7 @@ import moe.feng.luspeed.R;
 public class CircledItemAdapter extends WearableListView.Adapter {
 
 	private ArrayList<Item> items;
+	private Context hContext;
 
 	public CircledItemAdapter(ArrayList<Item> items) {
 		this.items = items;
@@ -22,9 +24,11 @@ public class CircledItemAdapter extends WearableListView.Adapter {
 
 	@Override
 	public WearableListView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		hContext = parent.getContext();
 		switch (viewType) {
 			default:
-				return new ItemViewHolder(View.inflate(parent.getContext(), R.layout.list_item_circled,null));
+				CircledItemView view = (CircledItemView) View.inflate(hContext, R.layout.list_item_circled, null);
+				return new ItemViewHolder(view);
 		}
 	}
 
@@ -33,7 +37,7 @@ public class CircledItemAdapter extends WearableListView.Adapter {
 		if (holder instanceof ItemViewHolder) {
 			ItemViewHolder mHolder = (ItemViewHolder) holder;
 			if (getItem(position).drawableId != -1) {
-				mHolder.imageView.setImageResource(getItem(position).drawableId);
+				mHolder.imageView.setImageDrawable(hContext.getResources().getDrawable(getItem(position).drawableId));
 			}
 			mHolder.setTitle(getItem(position).title);
 			mHolder.setSmallText(getItem(position).content);
@@ -49,7 +53,7 @@ public class CircledItemAdapter extends WearableListView.Adapter {
 		return items.size();
 	}
 
-	public class Item {
+	public static class Item {
 
 		public int drawableId = -1;
 		public String title = null, content = null;

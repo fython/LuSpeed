@@ -8,4 +8,12 @@
 
 	<string name="game_over">你在 %1$d 秒内已经撸了 %2$d 下。 你的撸速是 %3$s 次\/秒。 →_→</string>
 
+	<string name="about_title_0">"撸大湿"</string>
+	<string name="about_title_1">"新浪微博"</string>
+	<string name="about_title_2">"作者博客"</string>
+
+	<string name="about_content_0">"版本"</string>
+	<string name="about_content_1">"某烧饼"</string>
+	<string name="about_content_2">"http://feng.moe"</string>
+
 </resources>

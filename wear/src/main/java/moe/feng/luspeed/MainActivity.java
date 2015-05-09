@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mViewPager = (ViewPager) findViewById(R.id.viewpager);
+		mViewPager = (ViewPager) findViewById(R.id.grid_pager);
 		mViewPager.setAdapter(new MyPagerAdapter(getFragmentManager()));
 	}
 

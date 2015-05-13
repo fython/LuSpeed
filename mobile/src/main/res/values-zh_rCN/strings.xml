@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">撸大湿</string>
+
+	<string name="hello_world">在手机安装本应用后，将会通过手表同步软件（如 Android Wear、Ticwear）自动推送到你的 Android Wear 或 Ticwear 手表设备中。
+	\n\n撸大湿手机端应用还在开发当中，目前这个应用只是为了推送应用安装到手表中。我们会尽快完成手机端应用。\n\n\n作者微博：\@某烧饼</string>
+
+</resources>

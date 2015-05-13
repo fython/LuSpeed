@@ -11,6 +11,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault" >
+
+	    <meta-data android:name="com.google.android.wearable.beta.app" android:value="@integer/google_play_services_version" android:resource="@xml/wearable_app_desc"/>
+	    <meta-data android:name="com.mobvoi.ticwear.app" android:resource="@xml/wearable_app_desc"/>
+
         <activity
             android:name="moe.feng.luspeed.EntryActivity"
             android:label="@string/app_name" >

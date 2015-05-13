@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">LuSpeed</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+	<string name="hello_world">After installing this application on phone, it will be automatically pushed to your Android Wear devices (or Ticwear devices) which has been connected to phone.
+	\n\nLuSpeed for phone is developing, this app is just for pushing app to wearable devices now. We will finish it soon.\n\n\nAuthor\'s Sina Weibo: \@某烧饼</string>
 
 </resources>

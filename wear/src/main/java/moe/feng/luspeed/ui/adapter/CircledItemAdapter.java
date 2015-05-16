@@ -41,6 +41,7 @@ public class CircledItemAdapter extends WearableListView.Adapter {
 			}
 			mHolder.setTitle(getItem(position).title);
 			mHolder.setSmallText(getItem(position).content);
+			mHolder.position = position;
 		}
 	}
 
@@ -70,6 +71,7 @@ public class CircledItemAdapter extends WearableListView.Adapter {
 
 		public CircledImageView imageView;
 		public TextView title, smallText;
+		public int position;
 
 		public ItemViewHolder(View itemView) {
 			super(itemView);

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">擼大濕</string>
+
+	<string name="hello_world">在手機安裝該應用程式後，將會透過手錶同步程式（如 Android Wear、Ticwear）自動推送至你的 Android Wear 或 Ticwear 手錶設備中。
+	\n\n擼大濕手機端應用程式還在開發進程中，目前這個程式只是為了推送應用程式安裝到手錶中。我們會儘快完成手機端應用程式。\n\n\n作者新浪微博：\@某燒餅</string>
+
+</resources>

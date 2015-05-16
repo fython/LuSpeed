@@ -2,6 +2,7 @@ package moe.feng.luspeed.ui;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.support.wearable.view.WearableListView;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import moe.feng.luspeed.PictureShowActivity;
 import moe.feng.luspeed.R;
 import moe.feng.luspeed.ui.adapter.CircledItemAdapter;
 
@@ -41,7 +43,7 @@ public class AboutFragment extends Fragment implements WatchViewStub.OnLayoutInf
 	}
 
 	@Override
-	public void onLayoutInflated(WatchViewStub view) {
+	public void onLayoutInflated(final WatchViewStub view) {
 		mAboutList = (WearableListView) view.findViewById(R.id.about_list_view);
 
 		String version = "Unknown";
@@ -56,8 +58,29 @@ public class AboutFragment extends Fragment implements WatchViewStub.OnLayoutInf
 		array.add(createItem(mContext.getString(R.string.about_title_0), version, R.drawable.ic_launcher));
 		array.add(createItem(mContext.getString(R.string.about_title_1), mContext.getString(R.string.about_content_1), R.drawable.ic_sina_logo));
 		array.add(createItem(mContext.getString(R.string.about_title_2), mContext.getString(R.string.about_content_2), -1));
+		array.add(createItem(getString(R.string.about_title_3), getString(R.string.about_content_3), -1));
 
 		mAboutList.setAdapter(new CircledItemAdapter(array));
+		mAboutList.setClickListener(new WearableListView.ClickListener() {
+
+			@Override
+			public void onClick(WearableListView.ViewHolder viewHolder) {
+				if (viewHolder instanceof CircledItemAdapter.ItemViewHolder) {
+					CircledItemAdapter.ItemViewHolder holder = (CircledItemAdapter.ItemViewHolder) viewHolder;
+					switch (holder.position) {
+						case 3:
+							PictureShowActivity.showImage(getActivity(), R.drawable.alipay, Color.WHITE);
+							break;
+					}
+				}
+			}
+
+			@Override
+			public void onTopEmptyRegionClick() {
+
+			}
+
+		});
 	}
 
 	private CircledItemAdapter.Item createItem(String title, String content, int drawableId) {
